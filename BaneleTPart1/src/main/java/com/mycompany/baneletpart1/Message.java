@@ -105,6 +105,40 @@ public class Message {
         System.out.println("Message ID: "+this.messageID+"\nMessage Hash: "+this.messageHash+
                 "\nRecipient: "+this.recipientCell+"\nMessage: "+this.message);
     }
+    
+     public String createMessageHash(String messageID, int numMessageSent, String mesasage)
+    {
+       String messageHash =""; 
+       int count = 0;
+       
+       //Add first 2 digits for messageID
+        for (int i = 0; i < messageID.length(); i++) {
+           char current =  messageID.charAt(i); 
+           if(Character.isDigit(current) && count < 2)
+           {
+               messageHash+=current;
+               count++;
+           } 
+        }
+        //Adding the colon and number of messages sent
+        messageHash += ":";
+        messageHash += numMessageSent;
+        messageHash += ":";
+        
+        //Splitting the message into words wherever there are spaces
+        String[] messageArray = mesasage.trim().split("\\s+");
+        
+        //Getting the first and last words and removing punctuation like ? , ! .
+        String firstWord = messageArray[0].replaceAll("[^a-zA-Z0-9]", "");
+        String lastWord = messageArray[messageArray.length - 1].replaceAll("[^a-zA-Z0-9]", "");
+        
+        //Adding the first and last words of the message
+        messageHash += firstWord + lastWord;
+        
+        //Returning the hash in capital letters
+        return messageHash.toUpperCase();
+    }
+
 
 }
 
