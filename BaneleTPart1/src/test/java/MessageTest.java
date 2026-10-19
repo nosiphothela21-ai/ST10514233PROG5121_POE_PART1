@@ -8,14 +8,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Unit tests for Part 2 (the Message class), using the test data from the brief.
- *
- * The message ID is normally random. For the hash tests we use a fixed ID that
- * starts with "00", so the expected hash "00:0:HITONIGHT" can be checked.
- *
- * @author Kgomotso
- */
+
 public class MessageTest {
 
     //Test data for Message 1 (from the brief)
