@@ -8,6 +8,13 @@ package com.mycompany.baneletpart1;
  *
  * @author nosip
  */
+
+import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Random;
 public class Message {
    //Class field
     private String messageID;
