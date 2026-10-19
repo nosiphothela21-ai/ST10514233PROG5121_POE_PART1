@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
-import com.mycompany.baneletpart1.BaneleTPart1;
+import com.mycompany.baneletpart1.Login;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +20,7 @@ public class TestRegistrationAndLogin {
     {
         String testData = "Kyl_1";
         boolean expected = true;
-        boolean Actual = BaneleTPart1.checkUserName(testData);
+        boolean Actual = Login.checkUserName(testData);
         assertEquals(expected,Actual);
     }
     
@@ -29,7 +29,7 @@ public class TestRegistrationAndLogin {
     {
         String testData = "Kyle!!!!!!!!";
         boolean expected = false;
-        boolean Actual = BaneleTPart1.checkUserName(testData);
+        boolean Actual = Login.checkUserName(testData);
         assertEquals(expected,Actual);
     }
     
@@ -38,7 +38,7 @@ public class TestRegistrationAndLogin {
     {
         String testData = "Ch&&sec@ke99";
         boolean expected = true;
-        boolean Actual = BaneleTPart1.checkPasswordComplexity(testData);
+        boolean Actual = Login.checkPasswordComplexity(testData);
         assertEquals(expected,Actual);
     }
     
@@ -47,7 +47,7 @@ public class TestRegistrationAndLogin {
     {
         String testData = "password";
         boolean expected = false;
-        boolean Actual = BaneleTPart1.checkPasswordComplexity(testData);
+        boolean Actual = Login.checkPasswordComplexity(testData);
         assertEquals(expected,Actual);
     }
     
@@ -56,7 +56,7 @@ public class TestRegistrationAndLogin {
     {
         String testData = "+27838968976";
         boolean expected = true;
-        boolean Actual = BaneleTPart1.checkCellPhoneNumber(testData);
+        boolean Actual = Login.checkCellPhoneNumber(testData);
         assertEquals(expected,Actual);
     }
     
@@ -65,7 +65,7 @@ public class TestRegistrationAndLogin {
     {
         String testData = "08966553";
         boolean expected = false;
-        boolean Actual = BaneleTPart1.checkPasswordComplexity(testData);
+        boolean Actual = Login.checkPasswordComplexity(testData);
         assertEquals(expected,Actual);
     }
     
@@ -79,7 +79,7 @@ public class TestRegistrationAndLogin {
         String firstName = "Nosipho";
         String lastName = "Thela";
         String expected = "Welcome " + firstName + "," + lastName+", it is great to see you again.";
-        String Actual = BaneleTPart1.loginStatus(firstName, lastName, loginUserName, loginPassword, registeredUserName, registeredPassword);
+        String Actual = Login.loginStatus(firstName, lastName, loginUserName, loginPassword, registeredUserName, registeredPassword);
         
         assertTrue(Actual.equals(expected));
     }
@@ -94,7 +94,7 @@ public class TestRegistrationAndLogin {
         String firstName = "Nosipho";
         String lastName = "Thela";
         String expected = "Username or password incorrect.";
-        String Actual = BaneleTPart1.loginStatus(firstName, lastName, loginUserName, loginPassword, registeredUserName, registeredPassword);
+        String Actual = Login.loginStatus(firstName, lastName, loginUserName, loginPassword, registeredUserName, registeredPassword);
         
         assertFalse(Actual.equals(expected));
     }
