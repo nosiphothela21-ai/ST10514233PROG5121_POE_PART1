@@ -139,6 +139,85 @@ public class Message {
         return messageHash.toUpperCase();
     }
 
+      public String SentMessage(int userInput)
+    {
+        String choice = "";
+        
+        switch(userInput)
+        {
+            case 1: choice = "Message successfully sent.";
+            break;
+            
+            case 2: choice = "Press 0 to delete the message.";
+            break;
+            
+            case 3: choice = "Message successfully stored.";
+            break;
+            
+            default: choice = "Invalid option, please choose 1, 2 or 3.";
+            break;
+        }
+        return choice;
+    }
+    
+    public String printMessages(ArrayList<Message> MessagesList)
+    {
+        String retrievedMessages = "";
+        for (int i = 0; i < MessagesList.size(); i++) {
+            Message current = MessagesList.get(i);
+            retrievedMessages += "Message ID: " + current.getMessageID()
+                    + "\nMessage Hash: " + current.getMessageHash()
+                    + "\nRecipient: " + current.getRecipient()
+                    + "\nMessage: " + current.getMessage() + "\n\n";
+        }
+        return retrievedMessages;
+    }
+    
+    public int returnTotalMessages(ArrayList<Message> MessagesSent)
+    {
+        return MessagesSent.size();
+    }
+    
+    public void StoreMessages(ArrayList<Message> MessagesList)
+    {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        
+        try(FileWriter writer = new FileWriter("message.json"))
+        {
+            gson.toJson(MessagesList,writer);
+            System.out.println("Messages saved successfully!");
+        }
+        catch(IOException e)
+        {
+            System.out.println("Error saving Messages: "+e.getMessage());
+        }
+    }
+    
+    public static String generateMessageID()
+    {
+        Random random = new Random();
+        String id = "";
+        for (int i = 0; i < 10; i++)
+        {
+            id += random.nextInt(10);
+        }
+        return id;
+    }
+    
+    public String checkMessageLength(String message)
+    {
+        if (message.length() <= 250)
+        {
+            return "Message ready to send.";
+        }
+        return "Message exceeds 250 characters by " + (message.length() - 250) + "; please reduce the size.";
+    }
+    
+    public String messageIDCreated()
+    {
+        return "Message ID generated: " + this.messageID;
+    }
+
 
 }
 
